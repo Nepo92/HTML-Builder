@@ -20,7 +20,7 @@ rl.on('close', () => {
 });
 
 writeStream.on('close', () => {
-    console.log('BYE!!!');
+    console.log('\nBYE!!!');
     rl.close();
 });
 
