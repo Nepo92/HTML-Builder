@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require('fs/promises');
+const fsCb = require('fs');
 
 createAPP();
 
@@ -111,13 +112,13 @@ async function copyFiles(files, from, to) {
 }
 
 function mergeStyles(from, to) {
-    fs.writeFile(to, '', (err) => {
+    fsCb.writeFile(to, '', (err) => {
         if (err) {
             return err;
         }
     });
 
-    fs.readdir(from, {withFileTypes: true}, (err, files) => {
+    fsCb.readdir(from, {withFileTypes: true}, (err, files) => {
         if (err) {
             return err;
         }
@@ -128,10 +129,10 @@ function mergeStyles(from, to) {
             const isCssFile = file.name.match(/\.css$/) && !file.isDirectory();
 
             if (isCssFile) {
-                const stream = fs.createReadStream(path.join(from, file.name));
+                const stream = fsCb.createReadStream(path.join(from, file.name));
 
                 stream.on('data', (data) => {
-                    fs.appendFile(to, data.toString(), (err) => {
+                    fsCb.appendFile(to, data.toString(), (err) => {
                         if (err) {
                             return err;
                         }
