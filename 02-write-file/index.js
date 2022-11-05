@@ -20,7 +20,7 @@ rl.on('close', () => {
 });
 
 writeStream.on('close', () => {
-    console.log('bye');
+    console.log('BYE!!!');
     rl.close();
 });
 
@@ -28,6 +28,6 @@ rl.on('line', (data) => {
     if (data.toLowerCase() === 'exit') {
         writeStream.close();
     } else {
-        writeStream.write(data);
+        writeStream.write(data + '\n');
     }
 });
