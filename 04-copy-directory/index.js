@@ -1,9 +1,5 @@
-
-
-
 const path = require('path');
 const fs = require('fs/promises');
-const { rm } = require('fs');
 
 const from = path.resolve(__dirname, 'files');
 const to = path.resolve(__dirname, 'files-copy');
@@ -44,3 +40,5 @@ async function copyFiles(files, from, to) {
         }
     }
 }
+
+module.exports = copyDir;
