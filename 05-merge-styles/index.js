@@ -2,13 +2,12 @@ const path = require('path');
 const fs = require('fs');
 
 const from = path.resolve(__dirname, 'styles');
+const to = path.join(__dirname, 'project-dist', 'bundle.css');
 
-readFiles(from);
+mergeStyles(from, to);
 
-function readFiles(from) {
-    const target = path.join(__dirname, 'project-dist', 'bundle.css');
-
-    fs.writeFile(target, '', (err) => {
+function mergeStyles(from, to) {
+    fs.writeFile(to, '', (err) => {
         if (err) {
             return err;
         }
@@ -28,7 +27,7 @@ function readFiles(from) {
                 const stream = fs.createReadStream(path.join(from, file.name));
 
                 stream.on('data', (data) => {
-                    fs.appendFile(target, data.toString(), (err) => {
+                    fs.appendFile(to, data.toString(), (err) => {
                         if (err) {
                             return err;
                         }
@@ -38,3 +37,5 @@ function readFiles(from) {
         }
     });
 }
+
+module.exports = mergeStyles;
