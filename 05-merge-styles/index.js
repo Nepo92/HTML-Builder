@@ -37,5 +37,3 @@ function mergeStyles(from, to) {
         }
     });
 }
-
-module.exports = mergeStyles;

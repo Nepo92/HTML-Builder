@@ -40,5 +40,3 @@ async function copyFiles(files, from, to) {
         }
     }
 }
-
-module.exports = copyDir;
