@@ -55,7 +55,7 @@ async function createIndexHTML(distPath) {
 async function replaceComponent(result, chunk) {
     const arr = chunk.split('}}');
 
-    const name = arr.at(0);
+    const name = arr[0];
     const end = arr.slice(1);
 
     const component = path.resolve(__dirname, 'components', name + '.html');
